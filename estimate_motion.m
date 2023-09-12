@@ -83,6 +83,9 @@ end
 % get number of subjects
 n = length(files);
 
+% set flags struct
+flags = struct('quality', 0.9, 'sep', 4, 'fwhm', 5, 'rtm', 1, 'interp', 2, 'wrap', [0 0 0]);
+
 for i =1:n
 
     data_info = spm_vol(files(i));
@@ -100,13 +103,7 @@ for i =1:n
     P.'
         
     % estimate motion
-    spm_realign(P, 'quality', 0.9, 'sep', 4, 'fwhm', 5, ...
-        'rtm', 1, 'interp', 2, 'wrap', [0 0 0])
+    spm_realign(P, flags);
+
 end
-
-% set flags struct
-flags = struct('quality', 0.9, 'sep', 4, 'fwhm', 5, 'rtm', 1, 'interp', 2, 'wrap', [0 0 0]);
-
-% realign
-spm_realign(P, flags);
 
