@@ -1,2 +1,2 @@
 # spm-scripts
-Scripts for Statistical Parametric Mapping (SPM) on fMRI data
+This repository contains code used to preprocess fMRI data using [Statistical Parametric Mapping (SPM)](https://www.fil.ion.ucl.ac.uk/spm/).
