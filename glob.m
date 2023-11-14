@@ -5,7 +5,7 @@ function [g] = glob(A, str)
 
     if isstruct(A) == true
         error("Please provide the fieldname of %s as a cell array. \n" + ...
-            "Example: {struct.fieldname}.''", char(inputname(1)))
+            "Example: {struct.fieldname}.'", char(inputname(1)))
     end
 
     g = [];
