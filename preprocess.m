@@ -14,34 +14,17 @@
 subjects = [01 02 03 04 05 06 07 08 09 10];
 
 % directory
-datadir = string(pwd); % or set to whatever
+datadir = dir(fullfile(pwd)); % or set to whatever
+datapath = '';
 
 % get environment info
 user = getenv('USERNAME'); % for Windows 
 % user = getenv('USER') % for MacOS
 
 % get files in datadir
-files = dir(datadir);
-
-% check for compressed files (*.nii.gz)
-for i=1:length(files)
-
-    % split
-    split_name = split(files.name(i), '.');
-
-    % check
-    if strcmpi(split_name(end), 'gz')
-        gunzip([files.folder files.name])
-    else
-        sprintf('%c is already unzipped.', files.name(i))
-    end
-end
-
-% rework datadir for other things
-files = {files.name}.';
-files = files(3:end);
-folder = {files.folder(3:end)}.';
-folder = folder(3:end);
+g = gather(@glob, {datadir.names}.', 'nii', datapath);
+files = {g.name}.';
+folder = {g.folder}.';
 
 %% Realigning
 
@@ -49,7 +32,7 @@ folder = folder(3:end);
 n = length(files);
 
 % get source 
-source_file = []%
+source_file = [];
 
 for i =1:n
 
