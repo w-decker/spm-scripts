@@ -17,7 +17,8 @@ subjects = [01 02 03 04 05 06 07 08 09 10];
 datadir = string(pwd); % or set to whatever
 
 % get environment info
-user = getenv('USER');
+user = getenv('USERNAME'); % for Windows 
+% user = getenv('USER') % for MacOS
 
 % get files in datadir
 files = dir(datadir);
@@ -37,7 +38,6 @@ for i=1:length(files)
 end
 
 % rework datadir for other things
-
 files = {files.name}.';
 files = files(3:end);
 folder = {files.folder(3:end)}.';
