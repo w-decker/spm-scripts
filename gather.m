@@ -30,7 +30,7 @@ end
 
 %% Begin
 
-g = fun(a, str);
+t = fun(a, str);
 files = dir(fullfile(path));
 filenames = {files.names}.';
 
@@ -52,6 +52,11 @@ for i=1:length(filenames)
         files(i) = [];
     end
 end
+
+if nnz(strcmpi(t, g)) == length(t)
+    sprintf('Success!')
+else
+    error('Error. Please submit an issue on GitHub.')
 
 g = files;
 
